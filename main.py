@@ -20,8 +20,16 @@ async def on_ready():
     print(f'Logged in as {bot.user} (ID: {bot.user.id})')
     print('------')
 
+
 @bot.command()
-async def imagecreate(ctx,prompt):
+async def info(ctx): 
+    await ctx.send("With using -?- you can start. Write ?commands")
+@bot.command()
+async def commands(ctx): 
+    await ctx.send("?imagecreate")
+
+@bot.command()
+async def imagecreate(ctx,*,prompt):
     download_image(prompt)
     file = discord.File("generated_image.jpg")
     await ctx.send(file=file)
